@@ -8,53 +8,65 @@ package com.example.project;
 */
 
 public class NestedLoops {
-               /*
-return the string below for given height=5
-*
-**
-***
-****
-*****  
-           */
+
 public static String starStaircase(int height){
-    return "";
+    String newStr = "";
+    int counter = 1;
+    for (int i=1;i<=height;i++) {
+        for (int j=1;j<=counter;j++) {
+            newStr += "*";
+        }
+        counter++;
+        newStr += "\n";
+    }
+    return newStr.substring(0, newStr.length()-1); 
 }
-          /*
-return the string below for given height=5
-*****
-****
-***
-**
-*
-           */
 
 public static String starStaircaseReverse(int height){
-    return "";
+    String newStr = "";
+    int counter = height-1;
+    for (int i=1;i<=height;i++) {
+        for (int j=counter;j>=0;j--) {
+            newStr += "*";
+        }
+        counter--;
+        newStr += "\n";
+    }
+    return newStr.substring(0, newStr.length()-1);
 }
-            /*
 
-width=5 height=5
-*****
-*   *
-*   *
-*   *
-*****
-          */
-    public static String emptyBox(int width, int height) {
+public static String emptyBox(int width, int height) {
+    if (width < 2 || height < 2) {
         return "";
     }
-                    /*
-return the string below for word="HELLO" rows=5                    
-HELLO
-ELLOH
-LLOHE
-LOHEL
-OHELL
 
-  i will provide a hint for this one if you get stuck.. use modulo
-                */
-    public static String repeatRectangle(String word, int rows){
-        return "";
+    String newStr = "";
+    for (int i=1;i<=height;i++) {
+        if (i == 1 || i == height) {
+            for (int j=1;j<=width;j++) {
+                newStr += "*";
+            }
+        } else {
+            newStr += "*";
+            for (int j=2;j<=width-1;j++) {
+                newStr += " ";
+            }
+            newStr += "*";
+        }
+        newStr += "\n";
     }
+    return newStr.substring(0, newStr.length()-1);
+}
+
+
+public static String repeatRectangle(String word, int rows){
+    String newStr = word;
+    String newRect = newStr;
+    for (int i=1;i<rows;i++) {
+        newStr = newStr.substring(1,word.length()) + newStr.substring(0, 1);
+        newRect += "\n" + newStr;
+    }
+    return newRect; 
+}
 
 }
